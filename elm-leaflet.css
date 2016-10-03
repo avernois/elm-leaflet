@@ -19,7 +19,6 @@ ul#towns {
 	border-radius: 4px;
 	box-shadow: 0 1px 5px rgba(0,0,0,0.65);
 	list-style-type: none;
-	font-family: bold 12px Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 ul#towns li {
@@ -27,10 +26,16 @@ ul#towns li {
 	margin: 0;
 	padding: .5em;
 	color: #80cbc4;
+	cursor: pointer;
+	font: normal 14px Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 ul#towns li:hover {
-	background-color: #cdebb0;
+	background-color: #c8facc;
 	color: black;
-	cursor: pointer;
+}
+
+ul#towns li[data-selected="True"] {
+	background-color: #aedfa3;
+	color: black;
 }

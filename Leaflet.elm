@@ -2,7 +2,7 @@ port module Leaflet exposing (..)
 import Html exposing (Html, text, ul, li)
 import Html.App exposing (program)
 import Html.Events exposing (onClick)
-import Html.Attributes exposing (id)
+import Html.Attributes exposing (id, attribute)
 import Set
 
 
@@ -42,7 +42,7 @@ update : Msg -> Model ->(Model, Cmd Msg)
 update msg model =
   case msg of
     SelectTown town ->
-       (Debug.log "New active town: " ({ model | activeTown = town }), Cmd.none)
+       ({ model | activeTown = town }, Cmd.none)
 
 
 
@@ -77,6 +77,13 @@ view model =
   let
     townsLi : List Town -> List (Html Msg)
     townsLi towns =
-      List.map (\town -> li [onClick (SelectTown town.name)] [text town.name]) towns
+      List.map 
+        (\town ->
+          li 
+            [ attribute "data-selected" (toString (town.name == model.activeTown))
+            , onClick (SelectTown town.name)
+            ]
+            [text town.name]
+        ) towns
   in
     ul [id "towns"] (townsLi towns)
