@@ -3,7 +3,7 @@ import Html exposing (Html, text, ul, li)
 import Html.App exposing (program)
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (id, attribute)
-import LeafletData exposing (..)
+import LeafletData as Data
 
 
 
@@ -22,32 +22,29 @@ main = program
 -- Init
 
 
-type alias Model = Town
+type alias Model = Data.Town
 
 
 init : (Model, Cmd Msg)
 init =
-  let
-    defaultTown = LeafletData.defaultTown
-  in
-    ( defaultTown
-    , Cmd.batch
-      [ portActiveTown defaultTown
-      , portPlaces places
-      ]
-    )
+  ( Data.defaultTown
+  , Cmd.batch
+    [ portActiveTown Data.defaultTown
+    , portPlaces Data.places
+    ]
+  )
 
 
 
 -- UPDATE
 
 
-port portActiveTown : Town -> Cmd msg
-port portPlaces : List Place -> Cmd msg
+port portActiveTown : Data.Town -> Cmd msg
+port portPlaces : List Data.Place -> Cmd msg
 
 
 type Msg
-  = SelectTown Town
+  = SelectTown Data.Town
 
 
 update : Msg -> Model -> (Model, Cmd Msg)
@@ -74,7 +71,7 @@ subscriptions model =
 view : Model -> Html Msg
 view model =
   let
-    townsLi : List Town -> List (Html Msg)
+    townsLi : List Data.Town -> List (Html Msg)
     townsLi towns =
       List.map 
         (\town ->
@@ -85,4 +82,4 @@ view model =
             [text town.name]
         ) towns
   in
-    ul [id "towns"] (townsLi towns)
+    ul [id "towns"] (townsLi Data.towns)

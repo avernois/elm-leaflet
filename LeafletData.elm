@@ -11,13 +11,16 @@ type alias Town =
   }
 
 
-defaultTown = 
-  Town "Montpellier" {lat = 43.610769, lng = 3.876716}
+defaultTown : Town
+defaultTown =
+  Maybe.withDefault
+    (Town "noWhere" { lat = 47.059407, lng = -0.879787 })
+    (List.head towns)
 
 
 towns : List Town
 towns =
-  [ defaultTown
+  [ Town "Montpellier" {lat = 43.610769, lng = 3.876716}
   , Town "Bordeaux" {lat = 44.837789, lng = -0.579180}
   , Town "Toulouse" {lat = 43.604652, lng = 1.444209}
   , Town "Cholet" {lat = 47.059407, lng = -0.879787}
