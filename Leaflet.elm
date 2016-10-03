@@ -1,7 +1,62 @@
 port module Leaflet exposing (..)
 import Html exposing (Html, text, ul, li)
+import Html.App exposing (program)
+import Html.Events exposing (onClick)
 import Html.Attributes exposing (id)
 import Set
+
+
+
+-- Main
+
+main : Program Never
+main = program
+  { init = init
+  , view = view
+  , update = update
+  , subscriptions = subscriptions
+  }
+
+
+
+-- Init
+
+
+type alias Model = {activeTown: String}
+
+
+init : (Model, Cmd Msg)
+init = ( { activeTown = "Montpellier" }, Cmd.none )
+
+
+
+
+-- UPDATE
+
+
+type Msg
+  = SelectTown String
+
+
+update : Msg -> Model ->(Model, Cmd Msg)
+update msg model =
+  case msg of
+    SelectTown town ->
+       (Debug.log "New active town: " ({ model | activeTown = town }), Cmd.none)
+
+
+
+-- SUBSCRIPTIONS
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+  Sub.none
+
+
+
+-- View
+
 
 type alias Town =
   { name : String
@@ -17,10 +72,11 @@ towns =
   , Town "Lyon" {lat = 47.215586, lng = -1.541820 }
   ]
 
-main =
+view : Model -> Html Msg
+view model =
   let
-    townsLi : List Town -> List (Html String)
+    townsLi : List Town -> List (Html Msg)
     townsLi towns =
-      List.map (\town -> li [] [text town.name]) towns
+      List.map (\town -> li [onClick (SelectTown town.name)] [text town.name]) towns
   in
     ul [id "towns"] (townsLi towns)
