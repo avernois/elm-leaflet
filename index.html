@@ -13,8 +13,8 @@
 	<script>
 		const app = Elm.Leaflet.fullscreen()
 
-		app.ports.portActiveTown.subscribe(town => {
-		  console.log(town)
+		app.ports.portActiveTown.subscribe(({location}) => {
+		  map.panTo(new L.LatLng(location.lat, location.lng))
 		})
 
 		const map = L.map('map').setView([43.610769, 3.876716], 13)
