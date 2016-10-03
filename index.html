@@ -17,6 +17,14 @@
 		  map.panTo(new L.LatLng(location.lat, location.lng))
 		})
 
+		app.ports.portPlaces.subscribe(places => {
+			places.map(({name, location}) =>
+				new L.marker([location.lat, location.lng])
+				.bindPopup(name)
+				.addTo(map)
+			)
+		})
+
 		const map = L.map('map').setView([43.610769, 3.876716], 13)
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map)
 	</script>
