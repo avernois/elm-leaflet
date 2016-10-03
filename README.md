@@ -1,9 +1,13 @@
-# elm-leaflet
+# Elm-leaflet
 This is an example showing how integrate Leaflet via Elm's ports.
 
+## Demo
+
+[https://pointbar.github.io/elm-leaflet/](https://pointbar.github.io/elm-leaflet/)
+
 ## Goal
-- Display a Html town's list from Elm's data
-- Display an OSM map of a specific town
+- Display an html town's list from Elm's data
+- Display an OSM map by town
 - Place some markers for each town
 - Change map by clicking on town's list
 
