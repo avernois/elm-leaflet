@@ -38,15 +38,21 @@ towns =
 
 type alias Model = Town
 
+defaultTown : Town
+defaultTown =
+  Town "Montpellier" {lat = 43.610769, lng = 3.876716}
 
 init : (Model, Cmd Msg)
 init = 
-  ( Town "Montpellier" {lat = 43.610769, lng = 3.876716}, Cmd.none )
+  ( defaultTown, portActiveTown defaultTown )
 
 
 
 
 -- UPDATE
+
+
+port portActiveTown : Town -> Cmd msg
 
 
 type Msg
@@ -57,7 +63,7 @@ update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
     SelectTown town ->
-       (town, Cmd.none)
+       (town, portActiveTown town)
 
 
 
