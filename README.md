@@ -11,7 +11,7 @@ This is an example showing how integrate Leaflet via Elm's ports.
 - Place some markers for each town
 - Change map by clicking on town's list
 
-- All data are store in Elm's records
+- All data are stored in Elm's records
 
 
 ## Transpile JS to Elm
