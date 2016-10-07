@@ -7897,110 +7897,111 @@ var _elm_lang$html$Html_Events$Options = F2(
 		return {stopPropagation: a, preventDefault: b};
 	});
 
-var _user$project$LeafletData$Town = F2(
+var _user$project$Towns$Town = F2(
 	function (a, b) {
 		return {name: a, location: b};
 	});
-var _user$project$LeafletData$towns = _elm_lang$core$Native_List.fromArray(
+var _user$project$Towns$towns = _elm_lang$core$Native_List.fromArray(
 	[
 		A2(
-		_user$project$LeafletData$Town,
+		_user$project$Towns$Town,
 		'Montpellier',
 		{lat: 43.610769, lng: 3.876716}),
 		A2(
-		_user$project$LeafletData$Town,
+		_user$project$Towns$Town,
 		'Bordeaux',
 		{lat: 44.837789, lng: -0.57918}),
 		A2(
-		_user$project$LeafletData$Town,
+		_user$project$Towns$Town,
 		'Toulouse',
 		{lat: 43.604652, lng: 1.444209}),
 		A2(
-		_user$project$LeafletData$Town,
+		_user$project$Towns$Town,
 		'Cholet',
 		{lat: 47.059407, lng: -0.879787}),
 		A2(
-		_user$project$LeafletData$Town,
+		_user$project$Towns$Town,
 		'Marseille',
 		{lat: 43.296482, lng: 5.36978}),
 		A2(
-		_user$project$LeafletData$Town,
+		_user$project$Towns$Town,
 		'Lyon',
 		{lat: 45.764043, lng: 4.835659}),
 		A2(
-		_user$project$LeafletData$Town,
+		_user$project$Towns$Town,
 		'Nantes',
 		{lat: 47.215586, lng: -1.54182})
 	]);
-var _user$project$LeafletData$defaultTown = A2(
+var _user$project$Towns$defaultTown = A2(
 	_elm_lang$core$Maybe$withDefault,
 	A2(
-		_user$project$LeafletData$Town,
+		_user$project$Towns$Town,
 		'noWhere',
 		{lat: 47.059407, lng: -0.879787}),
-	_elm_lang$core$List$head(_user$project$LeafletData$towns));
-var _user$project$LeafletData$Place = F3(
+	_elm_lang$core$List$head(_user$project$Towns$towns));
+
+var _user$project$Places$Place = F3(
 	function (a, b, c) {
 		return {town: a, name: b, location: c};
 	});
-var _user$project$LeafletData$places = _elm_lang$core$Native_List.fromArray(
+var _user$project$Places$places = _elm_lang$core$Native_List.fromArray(
 	[
 		A3(
-		_user$project$LeafletData$Place,
+		_user$project$Places$Place,
 		'Toulouse',
 		'Pomme de Pain',
 		{lat: 43.60325, lng: 1.448835}),
 		A3(
-		_user$project$LeafletData$Place,
+		_user$project$Places$Place,
 		'Toulouse',
 		'Ras la Tasse',
 		{lat: 43.6018272, lng: 1.4439305}),
 		A3(
-		_user$project$LeafletData$Place,
+		_user$project$Places$Place,
 		'Montpellier',
 		'Gazette Café',
 		{lat: 43.604564, lng: 3.87842}),
 		A3(
-		_user$project$LeafletData$Place,
+		_user$project$Places$Place,
 		'Montpellier',
 		'Tennis la Jalade',
 		{lat: 43.628174, lng: 3.863447}),
 		A3(
-		_user$project$LeafletData$Place,
+		_user$project$Places$Place,
 		'Marseille',
 		'Grand Escalier',
 		{lat: 43.301308, lng: 5.3805723}),
 		A3(
-		_user$project$LeafletData$Place,
+		_user$project$Places$Place,
 		'Marseille',
 		'Le Môle',
 		{lat: 43.29531, lng: 5.3618}),
 		A3(
-		_user$project$LeafletData$Place,
+		_user$project$Places$Place,
 		'Lyon',
 		'Le Tasse Livre',
 		{lat: 45.7687415, lng: 4.830928}),
 		A3(
-		_user$project$LeafletData$Place,
+		_user$project$Places$Place,
 		'Lyon',
 		'La Folie Douce',
 		{lat: 45.7724217, lng: 4.8343591}),
 		A3(
-		_user$project$LeafletData$Place,
+		_user$project$Places$Place,
 		'Bordeaux',
 		'Le Garage Moderne',
 		{lat: 44.86527, lng: -0.55104}),
 		A3(
-		_user$project$LeafletData$Place,
+		_user$project$Places$Place,
 		'Bordeaux',
 		'French Coffee Shop',
 		{lat: 44.8405389, lng: -0.5732745})
 	]);
 
-var _user$project$Leaflet$subscriptions = function (model) {
+var _user$project$App$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
-var _user$project$Leaflet$portActiveTown = _elm_lang$core$Native_Platform.outgoingPort(
+var _user$project$App$portActiveTown = _elm_lang$core$Native_Platform.outgoingPort(
 	'portActiveTown',
 	function (v) {
 		return {
@@ -8008,17 +8009,17 @@ var _user$project$Leaflet$portActiveTown = _elm_lang$core$Native_Platform.outgoi
 			location: {lat: v.location.lat, lng: v.location.lng}
 		};
 	});
-var _user$project$Leaflet$update = F2(
+var _user$project$App$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
 		var _p1 = _p0._0;
 		return {
 			ctor: '_Tuple2',
 			_0: _p1,
-			_1: _user$project$Leaflet$portActiveTown(_p1)
+			_1: _user$project$App$portActiveTown(_p1)
 		};
 	});
-var _user$project$Leaflet$portPlaces = _elm_lang$core$Native_Platform.outgoingPort(
+var _user$project$App$portPlaces = _elm_lang$core$Native_Platform.outgoingPort(
 	'portPlaces',
 	function (v) {
 		return _elm_lang$core$Native_List.toArray(v).map(
@@ -8030,20 +8031,20 @@ var _user$project$Leaflet$portPlaces = _elm_lang$core$Native_Platform.outgoingPo
 				};
 			});
 	});
-var _user$project$Leaflet$init = {
+var _user$project$App$init = {
 	ctor: '_Tuple2',
-	_0: _user$project$LeafletData$defaultTown,
+	_0: _user$project$Towns$defaultTown,
 	_1: _elm_lang$core$Platform_Cmd$batch(
 		_elm_lang$core$Native_List.fromArray(
 			[
-				_user$project$Leaflet$portActiveTown(_user$project$LeafletData$defaultTown),
-				_user$project$Leaflet$portPlaces(_user$project$LeafletData$places)
+				_user$project$App$portActiveTown(_user$project$Towns$defaultTown),
+				_user$project$App$portPlaces(_user$project$Places$places)
 			]))
 };
-var _user$project$Leaflet$SelectTown = function (a) {
+var _user$project$App$SelectTown = function (a) {
 	return {ctor: 'SelectTown', _0: a};
 };
-var _user$project$Leaflet$view = function (model) {
+var _user$project$App$view = function (model) {
 	var townsLi = function (towns) {
 		return A2(
 			_elm_lang$core$List$map,
@@ -8058,7 +8059,7 @@ var _user$project$Leaflet$view = function (model) {
 							_elm_lang$core$Basics$toString(
 								_elm_lang$core$Native_Utils.eq(town.name, model.name))),
 							_elm_lang$html$Html_Events$onClick(
-							_user$project$Leaflet$SelectTown(town))
+							_user$project$App$SelectTown(town))
 						]),
 					_elm_lang$core$Native_List.fromArray(
 						[
@@ -8073,16 +8074,16 @@ var _user$project$Leaflet$view = function (model) {
 			[
 				_elm_lang$html$Html_Attributes$id('towns')
 			]),
-		townsLi(_user$project$LeafletData$towns));
+		townsLi(_user$project$Towns$towns));
 };
-var _user$project$Leaflet$main = {
+var _user$project$App$main = {
 	main: _elm_lang$html$Html_App$program(
-		{init: _user$project$Leaflet$init, view: _user$project$Leaflet$view, update: _user$project$Leaflet$update, subscriptions: _user$project$Leaflet$subscriptions})
+		{init: _user$project$App$init, view: _user$project$App$view, update: _user$project$App$update, subscriptions: _user$project$App$subscriptions})
 };
 
 var Elm = {};
-Elm['Leaflet'] = Elm['Leaflet'] || {};
-_elm_lang$core$Native_Platform.addPublicModule(Elm['Leaflet'], 'Leaflet', typeof _user$project$Leaflet$main === 'undefined' ? null : _user$project$Leaflet$main);
+Elm['App'] = Elm['App'] || {};
+_elm_lang$core$Native_Platform.addPublicModule(Elm['App'], 'App', typeof _user$project$App$main === 'undefined' ? null : _user$project$App$main);
 
 if (typeof define === "function" && define['amd'])
 {

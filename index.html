@@ -11,7 +11,7 @@
 	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 	<script src="build/elm-Leaflet.js"></script>
 	<script>
-		const app = Elm.Leaflet.fullscreen()
+		const app = Elm.App.fullscreen()
 
 		app.ports.portActiveTown.subscribe(({location}) => {
 		  map.panTo(new L.LatLng(location.lat, location.lng))
