@@ -17,7 +17,7 @@ This is an example showing how integrate Leaflet via Elm's ports.
 ## Transpile JS to Elm
 
 ```bash
-$ elm-make Leaflet.elm --output build/elm-Leaflet.js
+$ elm-make App.elm --output build/elm-Leaflet.js
 ```
 
 ## Explanation
