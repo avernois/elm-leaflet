@@ -7940,53 +7940,38 @@ var _user$project$Towns$defaultTown = A2(
 		{lat: 47.059407, lng: -0.879787}),
 	_elm_lang$core$List$head(_user$project$Towns$towns));
 
+var _user$project$Places$jsonPlaces = '\n{ \"places\":\n  [\n      {\n          \"name\": \"Pomme de Pain\",\n          \"lat\": 43.603250,\n          \"lon\": 1.4439305\n      },\n      {\n          \"name\": \"Ras la Tasse\",\n          \"lat\": 43.6018272,\n          \"lon\": 1.443905\n      }, \n      {\n          \"name\": \"Gazette Café\",\n          \"lat\": 43.604564,\n          \"lon\": 3.878420\n      },\n      {\n          \"name\": \"Tennis la Jalade\",\n          \"lat\": 43.628174,\n          \"lon\": 3.863447\n      },\n      {\n          \"name\": \"Grand Escalier\",\n          \"lat\": 43.301308,\n          \"lon\": 5.3805723\n      },\n      {\n          \"name\": \"Le Môle\",\n          \"lat\": 43.29531,\n          \"lon\": 5.36180\n      },\n      {\n          \"name\": \"Le Tasse Livre\",\n          \"lat\": 45.7687415,\n          \"lon\": 4.830928\n      },\n      {\n          \"name\": \"La Folie Douce\",\n          \"lat\":  45.7724217,\n          \"lon\": 4.8343591\n      },\n      {\n          \"name\": \"Le Garage Moderne\",\n          \"lat\": 44.86527,\n          \"lon\": -0.55104\n      },\n      {\n          \"name\": \"French Coffee Shop\",\n          \"lat\": 44.8405389,\n          \"lon\": -0.5732745\n      }\n\n  ]\n}\n';
+var _user$project$Places$Coordinates = F2(
+	function (a, b) {
+		return {lat: a, lng: b};
+	});
 var _user$project$Places$Place = F2(
 	function (a, b) {
 		return {name: a, location: b};
 	});
-var _user$project$Places$places = _elm_lang$core$Native_List.fromArray(
-	[
-		A2(
-		_user$project$Places$Place,
-		'Pomme de Pain',
-		{lat: 43.60325, lng: 1.448835}),
-		A2(
-		_user$project$Places$Place,
-		'Ras la Tasse',
-		{lat: 43.6018272, lng: 1.4439305}),
-		A2(
-		_user$project$Places$Place,
-		'Gazette Café',
-		{lat: 43.604564, lng: 3.87842}),
-		A2(
-		_user$project$Places$Place,
-		'Tennis la Jalade',
-		{lat: 43.628174, lng: 3.863447}),
-		A2(
-		_user$project$Places$Place,
-		'Grand Escalier',
-		{lat: 43.301308, lng: 5.3805723}),
-		A2(
-		_user$project$Places$Place,
-		'Le Môle',
-		{lat: 43.29531, lng: 5.3618}),
-		A2(
-		_user$project$Places$Place,
-		'Le Tasse Livre',
-		{lat: 45.7687415, lng: 4.830928}),
-		A2(
-		_user$project$Places$Place,
-		'La Folie Douce',
-		{lat: 45.7724217, lng: 4.8343591}),
-		A2(
-		_user$project$Places$Place,
-		'Le Garage Moderne',
-		{lat: 44.86527, lng: -0.55104}),
-		A2(
-		_user$project$Places$Place,
-		'French Coffee Shop',
-		{lat: 44.8405389, lng: -0.5732745})
-	]);
+var _user$project$Places$decodePlace = A3(
+	_elm_lang$core$Json_Decode$object2,
+	_user$project$Places$Place,
+	A2(_elm_lang$core$Json_Decode_ops[':='], 'name', _elm_lang$core$Json_Decode$string),
+	A3(
+		_elm_lang$core$Json_Decode$object2,
+		_user$project$Places$Coordinates,
+		A2(_elm_lang$core$Json_Decode_ops[':='], 'lat', _elm_lang$core$Json_Decode$float),
+		A2(_elm_lang$core$Json_Decode_ops[':='], 'lon', _elm_lang$core$Json_Decode$float)));
+var _user$project$Places$decodePlaces = A2(
+	_elm_lang$core$Json_Decode$at,
+	_elm_lang$core$Native_List.fromArray(
+		['places']),
+	_elm_lang$core$Json_Decode$list(_user$project$Places$decodePlace));
+var _user$project$Places$places = function () {
+	var _p0 = A2(_elm_lang$core$Json_Decode$decodeString, _user$project$Places$decodePlaces, _user$project$Places$jsonPlaces);
+	if (_p0.ctor === 'Ok') {
+		return _p0._0;
+	} else {
+		return _elm_lang$core$Native_List.fromArray(
+			[]);
+	}
+}();
 
 var _user$project$App$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
@@ -8015,7 +8000,6 @@ var _user$project$App$portPlaces = _elm_lang$core$Native_Platform.outgoingPort(
 		return _elm_lang$core$Native_List.toArray(v).map(
 			function (v) {
 				return {
-					town: v.town,
 					name: v.name,
 					location: {lat: v.location.lat, lng: v.location.lng}
 				};
