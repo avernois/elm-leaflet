@@ -7940,60 +7940,50 @@ var _user$project$Towns$defaultTown = A2(
 		{lat: 47.059407, lng: -0.879787}),
 	_elm_lang$core$List$head(_user$project$Towns$towns));
 
-var _user$project$Places$Place = F3(
-	function (a, b, c) {
-		return {town: a, name: b, location: c};
+var _user$project$Places$Place = F2(
+	function (a, b) {
+		return {name: a, location: b};
 	});
 var _user$project$Places$places = _elm_lang$core$Native_List.fromArray(
 	[
-		A3(
+		A2(
 		_user$project$Places$Place,
-		'Toulouse',
 		'Pomme de Pain',
 		{lat: 43.60325, lng: 1.448835}),
-		A3(
+		A2(
 		_user$project$Places$Place,
-		'Toulouse',
 		'Ras la Tasse',
 		{lat: 43.6018272, lng: 1.4439305}),
-		A3(
+		A2(
 		_user$project$Places$Place,
-		'Montpellier',
 		'Gazette Café',
 		{lat: 43.604564, lng: 3.87842}),
-		A3(
+		A2(
 		_user$project$Places$Place,
-		'Montpellier',
 		'Tennis la Jalade',
 		{lat: 43.628174, lng: 3.863447}),
-		A3(
+		A2(
 		_user$project$Places$Place,
-		'Marseille',
 		'Grand Escalier',
 		{lat: 43.301308, lng: 5.3805723}),
-		A3(
+		A2(
 		_user$project$Places$Place,
-		'Marseille',
 		'Le Môle',
 		{lat: 43.29531, lng: 5.3618}),
-		A3(
+		A2(
 		_user$project$Places$Place,
-		'Lyon',
 		'Le Tasse Livre',
 		{lat: 45.7687415, lng: 4.830928}),
-		A3(
+		A2(
 		_user$project$Places$Place,
-		'Lyon',
 		'La Folie Douce',
 		{lat: 45.7724217, lng: 4.8343591}),
-		A3(
+		A2(
 		_user$project$Places$Place,
-		'Bordeaux',
 		'Le Garage Moderne',
 		{lat: 44.86527, lng: -0.55104}),
-		A3(
+		A2(
 		_user$project$Places$Place,
-		'Bordeaux',
 		'French Coffee Shop',
 		{lat: 44.8405389, lng: -0.5732745})
 	]);
@@ -8084,6 +8074,10 @@ var _user$project$App$main = {
 var Elm = {};
 Elm['App'] = Elm['App'] || {};
 _elm_lang$core$Native_Platform.addPublicModule(Elm['App'], 'App', typeof _user$project$App$main === 'undefined' ? null : _user$project$App$main);
+Elm['Places'] = Elm['Places'] || {};
+_elm_lang$core$Native_Platform.addPublicModule(Elm['Places'], 'Places', typeof _user$project$Places$main === 'undefined' ? null : _user$project$Places$main);
+Elm['Towns'] = Elm['Towns'] || {};
+_elm_lang$core$Native_Platform.addPublicModule(Elm['Towns'], 'Towns', typeof _user$project$Towns$main === 'undefined' ? null : _user$project$Towns$main);
 
 if (typeof define === "function" && define['amd'])
 {
